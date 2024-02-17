@@ -192,9 +192,14 @@ class ImageEditor:
             clip.tokenize(self.args.prompt_src).to(self.device)
         ).float()
 
+        init_save_path = Path(
+                            os.path.join(self.args.output_path, "input.png")
+                        )
+
         self.image_size = (self.model_config["image_size"], self.model_config["image_size"])
         self.init_image_pil = Image.open(self.args.init_image).convert("RGB")
         self.init_image_pil = self.init_image_pil.resize(self.image_size, Image.LANCZOS)  # type: ignore
+        self.init_image_pil.save(init_save_path)
         self.init_image = (
             TF.to_tensor(self.init_image_pil).to(self.device).unsqueeze(0).mul(2).sub(1)
         )
@@ -357,24 +362,24 @@ class ImageEditor:
                         pred_image_pil = TF.to_pil_image(pred_image)
 
                         filename = Path(self.args.init_image).stem
-                        visualization_path = visualization_path.with_name(
-                            f"{filename}_{self.args.prompt_tgt}_{iteration_number}{visualization_path.suffix}"
-                        )
+                        #visualization_path = visualization_path.with_name(
+                        #    f"{filename}_{self.args.prompt_tgt}_{iteration_number}{visualization_path.suffix}"
+                        #)
 
-                        if self.args.export_assets:
-                            pred_path = self.assets_path / visualization_path.name
-                            pred_image_pil.save(pred_path)
+                        #if self.args.export_assets:
+                        #    pred_path = self.assets_path / visualization_path.name
+                        #    pred_image_pil.save(pred_path)
 
                         intermediate_samples[b].append(pred_image_pil)
                         if should_save_image:
-                            show_edited_masked_image(
-                                title=self.args.prompt_tgt,
-                                source_image=self.init_image_pil,
-                                edited_image=pred_image_pil,
-                                path=visualization_path,
-                            )
+                            #show_edited_masked_image(
+                            #    title=self.args.prompt_tgt,
+                            #    source_image=self.init_image_pil,
+                            #    edited_image=pred_image_pil,
+                            #    path=visualization_path,
+                            #)
                             
-                            visualization_path2 = str(visualization_path).replace('.png','_output.png')
+                            visualization_path2 = str(visualization_path).replace('.png',f'_{iteration_number}.png')
                             pred_image_arr = np.array(pred_image_pil)
                             plt.imsave(visualization_path2, pred_image_arr)
 
