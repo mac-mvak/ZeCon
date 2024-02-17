@@ -1,0 +1,112 @@
+{   "dataset_type" : "imagenet",
+    "params_dict":{
+    "mosaic": {
+        "clip_global": 20000,
+        "clip_dir": 20000,
+        "l_zecon" : 500,
+        "l_mse": 1000,
+        "l_vgg": 100,
+        "patch_max": 0.3,
+        "t_0": 25
+    },
+    "golden": 
+    {
+        "clip_global": 5000,
+        "clip_dir": 5000,
+        "l_zecon" : 100,
+        "l_mse": 5000,
+        "l_vgg": 10,
+        "patch_max": 0.05,
+        "t_0": 15
+    },
+    "watercolor art": 
+    {
+        "clip_global": 5000,
+        "clip_dir": 10000,
+        "l_zecon" : 300,
+        "l_mse": 0,
+        "l_vgg": 100,
+        "patch_max": 0.3,
+        "t_0": 25
+    },
+    "stained glasses": {
+        "clip_global": 15000,
+        "clip_dir": 15000,
+        "l_zecon" : 200,
+        "l_mse": 1000,
+        "l_vgg": 10,
+        "patch_max": 0.05,
+        "t_0": 25
+    },
+    "oil painting of flowers": 
+    {
+        "clip_global": 20000,
+        "clip_dir": 20000,
+        "l_zecon" : 1500,
+        "l_mse": 10000,
+        "l_vgg": 10,
+        "patch_max": 0.05,
+        "t_0": 25
+    },
+    "red bricks": 
+    {
+        "clip_global": 20000,
+        "clip_dir": 40000,
+        "l_zecon" : 1000,
+        "l_mse": 1000,
+        "l_vgg": 10,
+        "patch_max": 0.05,
+        "t_0": 25
+    }, 
+    "wooden": 
+    {
+        "clip_global": 20000,
+        "clip_dir": 50000,
+        "l_zecon" : 1000,
+        "l_mse": 1000,
+        "l_vgg": 10,
+        "patch_max": 0.05,
+        "t_0": 25
+    },
+    "leather": 
+    {
+        "clip_global": 20000,
+        "clip_dir": 30000,
+        "l_zecon" : 2000,
+        "l_mse": 20000,
+        "l_vgg": 200,
+        "patch_max": 0.3,
+        "t_0": 25
+    },
+    "marbling": 
+    {
+        "clip_global": 20000,
+        "clip_dir": 30000,
+        "l_zecon" : 2000,
+        "l_mse": 20000,
+        "l_vgg": 200,
+        "patch_max": 0.3,
+        "t_0": 25
+    },
+    "autumn": 
+    {
+        "clip_global": 20000,
+        "clip_dir": 20000,
+        "l_zecon" : 700,
+        "l_mse": 10000,
+        "l_vgg": 100,
+        "patch_max": 0.05,
+        "t_0": 25
+    },
+    "snow": 
+    {
+        "clip_global": 20000,
+        "clip_dir": 20000,
+        "l_zecon" : 700,
+        "l_mse": 10000,
+        "l_vgg": 100,
+        "patch_max": 0.05,
+        "t_0": 25
+    }
+    }
+}
