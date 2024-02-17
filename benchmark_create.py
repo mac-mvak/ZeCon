@@ -28,7 +28,7 @@ if __name__ == '__main__':
             file_path = args.dataset + '/' + file_name
             running_script = (f"python main.py --output_path './results/{i}' --init_image '{file_path}' --data '{params_dict['dataset_type']}' --prompt_tgt '{key}' --prompt_src 'Photo' \ \n" +
             f"--skip_timesteps {params['t_0']} --timestep_respacing 50 --diffusion_type 'ddim_ddpm' --l_clip_global 0 --l_clip_global_patch {params['clip_global']} --l_clip_dir 0 --l_clip_dir_patch {params['clip_dir']} \ \n" +
-            f"--l_zecon {params['l_zecon']} --l_mse {params['l_mse']} --l_vgg {params['l_vgg']} --patch_min 0.01 --patch_max {params['patch_max']}\n\n")
+            f"--l_zecon {params['l_zecon']} --l_mse {params['l_mse']} --l_vgg {params['l_vgg']} --patch_min 0.01 --patch_max {params['patch_max']} --iterations_num 2\n\n")
             bash_script.write(running_script)
             i += 1
     bash_script.close() 
