@@ -17,14 +17,14 @@
         "l_mse": 5000,
         "l_vgg": 10,
         "patch_max": 0.1,
-        "t_0": 15
+        "t_0": 25
     },
     "tanned face": 
     {
         "clip_global": 15000,
         "clip_dir": 15000,
         "l_zecon" : 1000,
-        "l_mse": 1000,
+        "l_mse": 10000,
         "l_vgg": 100,
         "patch_max": 0.3,
         "t_0": 25
@@ -53,7 +53,7 @@
         "clip_global": 10000,
         "clip_dir": 20000,
         "l_zecon" : 500,
-        "l_mse": 1000,
+        "l_mse": 10000,
         "l_vgg": 100,
         "patch_max": 0.3,
         "t_0": 25
@@ -76,7 +76,7 @@
         "l_mse": 0,
         "l_vgg": 50,
         "patch_max": 0.05,
-        "t_0": 25
+        "t_0": 15
     },
     "ukiyo-e": 
     {
