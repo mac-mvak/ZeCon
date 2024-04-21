@@ -12,7 +12,7 @@ def get_arguments() -> argparse.Namespace:
         "-p_s", "--prompt_src", type=str, help="The prompt from the source", required=False
     )
     parser.add_argument(
-        "-i", "--init_image", type=str, help="The path to the source image input", required=False
+        "-i", "--init_directory", type=str, help="The path to the source image input", required=False
     )
     parser.add_argument(
         "-r", "--ref_image", type=str, help="The path to the reference image input", required=False
