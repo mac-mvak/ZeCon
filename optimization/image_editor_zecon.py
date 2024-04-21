@@ -5,7 +5,7 @@ from utils.metrics_accumulator import MetricsAccumulator
 
 from numpy import random
 from optimization.augmentations import ImageAugmentations as ImageAugmentations
-from PIL import Image
+from PIL import Image, ImageFilter
 import torch
 from torchvision import transforms
 import torchvision.transforms.functional as F
@@ -197,12 +197,21 @@ class ImageEditor:
                         )
 
         self.image_size = (self.model_config["image_size"], self.model_config["image_size"])
-        self.init_image_pil = Image.open(self.args.init_image).convert("RGB")
+        if self.args.bw:
+            self.init_image_pil = Image.open(self.args.init_image).convert("L")
+        else:
+            self.init_image_pil = Image.open(self.args.init_image).convert("RGB")
+        if self.args.gaussian_kernel > 0:
+            self.init_image_pil = self.init_image_pil.filter(
+                    ImageFilter.GaussianBlur(self.args.gaussian_kernel))
+
         self.init_image_pil = self.init_image_pil.resize(self.image_size, Image.LANCZOS)  # type: ignore
         self.init_image_pil.save(init_save_path)
         self.init_image = (
             TF.to_tensor(self.init_image_pil).to(self.device).unsqueeze(0).mul(2).sub(1)
         )
+        if self.args.bw:
+            self.init_image = torch.cat([self.init_image, self.init_image, self.init_image], dim=1)
         visualization_path = visualization_path = Path(
                             os.path.join(self.args.output_path, self.args.output_file)
                         )

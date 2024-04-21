@@ -2,4 +2,6 @@ __pycache__
 ckpt
 results
 test_imagenet
+imagenet_subset
+results_default
 

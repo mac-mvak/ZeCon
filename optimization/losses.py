@@ -96,7 +96,7 @@ def zecon_loss_direct(Unet, x_in, y_in,t):
 
         patch_id = patch_ids[feat_id]
 
-        patch_id = torch.tensor(patch_id, dtype=torch.long, device=feat.device)
+        patch_id = patch_id.detach().long().clone()
         x_sample = feat_reshape[:, patch_id, :].flatten(0, 1)  # reshape(-1, x.shape[1])
         
         x_sample = l2norm(x_sample)

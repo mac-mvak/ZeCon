@@ -17,6 +17,13 @@ def get_arguments() -> argparse.Namespace:
     parser.add_argument(
         "-r", "--ref_image", type=str, help="The path to the reference image input", required=False
     )
+
+    parser.add_argument(
+        "--bw", action='store_true'
+    )
+
+    parser.add_argument('--gaussian_kernel', type=float, default=0., help="Gaussian noise filter")
+
     parser.add_argument("--mask", type=str, help="The path to the mask to edit with", default=None)
 
     # Diffusion
