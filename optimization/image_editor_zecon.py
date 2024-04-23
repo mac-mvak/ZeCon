@@ -192,13 +192,17 @@ class ImageEditor:
             clip.tokenize(self.args.prompt_src).to(self.device)
         ).float()
 
-        files = os.listdir(self.args.dataset)
+        files = os.listdir(self.args.init_directory)
         files.sort()
         for i, file in enumerate(files):
 
+            os.makedirs(os.path.join(self.args.output_path, str(i)), exist_ok=True)
+
             init_save_path = Path(
-                                os.path.join(self.args.output_path, i, "input.png")
+                                os.path.join(self.args.output_path, str(i), "input.png")
                             )
+            
+            file = Path(os.path.join(self.args.init_directory, file))
 
             self.image_size = (self.model_config["image_size"], self.model_config["image_size"])
             if self.args.bw:
@@ -217,7 +221,7 @@ class ImageEditor:
             if self.args.bw:
                 self.init_image = torch.cat([self.init_image, self.init_image, self.init_image], dim=1)
             visualization_path = visualization_path = Path(
-                                os.path.join(self.args.output_path, i, self.args.output_file)
+                                os.path.join(self.args.output_path, str(i), self.args.output_file)
                             )
 
             def cond_fn(x, t, y=None):
@@ -374,7 +378,7 @@ class ImageEditor:
                             pred_image = pred_image.add(1).div(2).clamp(0, 1)
                             pred_image_pil = TF.to_pil_image(pred_image)
 
-                            filename = Path(self.args.init_image).stem
+                            #filename = Path(self.args.init_image).stem
                             #visualization_path = visualization_path.with_name(
                             #    f"{filename}_{self.args.prompt_tgt}_{iteration_number}{visualization_path.suffix}"
                             #)

@@ -3,5 +3,8 @@ ckpt
 results
 test_imagenet
 imagenet_subset
-results_default
+results_default*
+results_gaussian_bw*
+results_gaussian*
+results_bw*
 
